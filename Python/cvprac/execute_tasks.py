@@ -10,7 +10,7 @@ cvp1 = "192.168.0.5"
 # cvp2 = ""
 # cvp3 = ""
 cvp_user = "arista"                                                                     #Set the CVP login parameters
-cvp_pw = "arista6ycd"
+cvp_pw = "odebr1b6gbocgg6x"
 
 client = cvp_client.CvpClient()
 
