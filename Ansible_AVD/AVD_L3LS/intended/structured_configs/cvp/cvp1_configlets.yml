@@ -263,6 +263,7 @@ cvp_configlets:
     Ethernet5\n   description P2P_spine3_Ethernet6\n   no shutdown\n   mtu 1550\n
     \  no switchport\n   ip address 192.168.103.23/31\n!\ninterface Ethernet7\n   description
     SERVER_host3_Ethernet2\n   no shutdown\n   channel-group 7 mode active\n!\ninterface
+    Ethernet9\n   no shutdown\n   no switchport\n   vrf VRF_A\n   ip address 10.1.5.1/24\n!\ninterface
     Loopback0\n   description ROUTER_ID\n   no shutdown\n   ip address 192.168.101.4/32\n!\ninterface
     Loopback1\n   description VXLAN_TUNNEL_SOURCE\n   no shutdown\n   ip address 192.168.102.3/32\n!\ninterface
     Management0\n   description OOB_MANAGEMENT\n   no shutdown\n   vrf MGMT\n   ip
@@ -320,9 +321,10 @@ cvp_configlets:
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf VRF_A\n      rd 192.168.101.4:10\n      route-target import
     evpn 10:10\n      route-target export evpn 10:10\n      router-id 192.168.101.4\n
-    \     neighbor 10.255.251.4 peer group MLAG-IPv4-UNDERLAY-PEER\n      neighbor
-    10.255.251.4 description leaf3_Vlan3009\n      redistribute connected route-map
-    RM-CONN-2-BGP-VRFS\n!\nend\n"
+    \     neighbor 10.1.5.254 remote-as 1\n      neighbor 10.255.251.4 peer group
+    MLAG-IPv4-UNDERLAY-PEER\n      neighbor 10.255.251.4 description leaf3_Vlan3009\n
+    \     redistribute connected route-map RM-CONN-2-BGP-VRFS\n      !\n      address-family
+    ipv4\n         neighbor 10.1.5.254 activate\n!\nend\n"
   AVD_spine1: "!\nno enable password\nno aaa root\n!\nvlan internal order ascending
     range 1006 1199\n!\ntransceiver qsfp default-mode 4x10G\n!\nservice routing protocols
     model multi-agent\n!\nhostname spine1\ndns domain atd.lab\n!\nspanning-tree mode

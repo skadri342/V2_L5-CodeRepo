@@ -15,3 +15,13 @@ tenants:
             name: Internal
             enabled: true
             ip_address_virtual: 10.1.20.1/24
+        l3_interfaces:
+          - nodes: [leaf4]
+            interfaces: [Ethernet9]
+            enabled: True 
+            ip_addresses: [10.1.5.1/24]
+        bgp_peers:
+          - nodes: [leaf4]
+            ip_address: 10.1.5.254
+            remote_as: 1
+            

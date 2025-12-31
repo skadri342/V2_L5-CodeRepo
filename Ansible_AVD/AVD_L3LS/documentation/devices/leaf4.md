@@ -237,6 +237,7 @@ vlan 4094
 | Ethernet3 | P2P_spine1_Ethernet6 | - | 192.168.103.19/31 | default | 1550 | False | - | - |
 | Ethernet4 | P2P_spine2_Ethernet6 | - | 192.168.103.21/31 | default | 1550 | False | - | - |
 | Ethernet5 | P2P_spine3_Ethernet6 | - | 192.168.103.23/31 | default | 1550 | False | - | - |
+| Ethernet9 | - | - | 10.1.5.1/24 | VRF_A | - | False | - | - |
 
 #### Ethernet Interfaces Device Configuration
 
@@ -277,6 +278,12 @@ interface Ethernet7
    description SERVER_host3_Ethernet2
    no shutdown
    channel-group 7 mode active
+!
+interface Ethernet9
+   no shutdown
+   no switchport
+   vrf VRF_A
+   ip address 10.1.5.1/24
 ```
 
 ### Port-Channel Interfaces
@@ -566,6 +573,7 @@ ASN Notation: asplain
 | 192.168.103.20 | 65001 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
 | 192.168.103.22 | 65001 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
 | 10.255.251.4 | Inherited from peer group MLAG-IPv4-UNDERLAY-PEER | VRF_A | - | Inherited from peer group MLAG-IPv4-UNDERLAY-PEER | Inherited from peer group MLAG-IPv4-UNDERLAY-PEER | - | - | - | - | - | - |
+| 10.1.5.254 | 1 | VRF_A | - | - | - | - | - | - | - | - | - |
 
 #### Router BGP EVPN Address Family
 
@@ -657,9 +665,13 @@ router bgp 65299
       route-target import evpn 10:10
       route-target export evpn 10:10
       router-id 192.168.101.4
+      neighbor 10.1.5.254 remote-as 1
       neighbor 10.255.251.4 peer group MLAG-IPv4-UNDERLAY-PEER
       neighbor 10.255.251.4 description leaf3_Vlan3009
       redistribute connected route-map RM-CONN-2-BGP-VRFS
+      !
+      address-family ipv4
+         neighbor 10.1.5.254 activate
 ```
 
 ## BFD

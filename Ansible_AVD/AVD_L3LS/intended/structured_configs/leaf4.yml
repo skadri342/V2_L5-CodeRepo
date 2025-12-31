@@ -52,6 +52,13 @@ ethernet_interfaces:
   peer_type: spine
   switchport:
     enabled: false
+- name: Ethernet9
+  shutdown: false
+  vrf: VRF_A
+  ip_address: 10.1.5.1/24
+  peer_type: l3_interface
+  switchport:
+    enabled: false
 - name: Ethernet7
   description: SERVER_host3_Ethernet2
   shutdown: false
@@ -269,10 +276,16 @@ router_bgp:
     - ip_address: 10.255.251.4
       peer_group: MLAG-IPv4-UNDERLAY-PEER
       description: leaf3_Vlan3009
+    - ip_address: 10.1.5.254
+      remote_as: '1'
     redistribute:
       connected:
         enabled: true
         route_map: RM-CONN-2-BGP-VRFS
+    address_family_ipv4:
+      neighbors:
+      - ip_address: 10.1.5.254
+        activate: true
 service_routing_protocols_model: multi-agent
 spanning_tree:
   mode: mstp
