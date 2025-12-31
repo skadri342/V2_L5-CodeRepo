@@ -18,7 +18,7 @@ ethernet_interfaces:
   description: P2P_leaf2_Ethernet4
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.8/31
+  ip_address: 192.168.103.10/31
   peer: leaf2
   peer_interface: Ethernet4
   peer_type: l3leaf
@@ -28,7 +28,7 @@ ethernet_interfaces:
   description: P2P_leaf3_Ethernet4
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.14/31
+  ip_address: 192.168.103.18/31
   peer: leaf3
   peer_interface: Ethernet4
   peer_type: l3leaf
@@ -38,7 +38,7 @@ ethernet_interfaces:
   description: P2P_leaf4_Ethernet4
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.20/31
+  ip_address: 192.168.103.26/31
   peer: leaf4
   peer_interface: Ethernet4
   peer_type: l3leaf
@@ -112,17 +112,17 @@ router_bgp:
     remote_as: '65100'
     peer: leaf1
     description: leaf1_Ethernet4
-  - ip_address: 192.168.103.9
+  - ip_address: 192.168.103.11
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65100'
     peer: leaf2
     description: leaf2_Ethernet4
-  - ip_address: 192.168.103.15
+  - ip_address: 192.168.103.19
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65299'
     peer: leaf3
     description: leaf3_Ethernet4
-  - ip_address: 192.168.103.21
+  - ip_address: 192.168.103.27
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65299'
     peer: leaf4

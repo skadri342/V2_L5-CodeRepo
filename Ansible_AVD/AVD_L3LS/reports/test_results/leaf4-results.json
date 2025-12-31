@@ -37,6 +37,16 @@
     ],
     "description": "Verifies the health of specific BGP peer(s) for given address families.",
     "result": "success",
+    "custom_field": "BGP EVPN Peer: spine4 (IP: 192.168.101.14)"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
     "custom_field": "BGP IPv4 Unicast Peer: leaf3 (IP: 10.255.251.4)"
   },
   {
@@ -47,7 +57,7 @@
     ],
     "description": "Verifies the health of specific BGP peer(s) for given address families.",
     "result": "success",
-    "custom_field": "BGP IPv4 Unicast Peer: spine1 (IP: 192.168.103.18)"
+    "custom_field": "BGP IPv4 Unicast Peer: spine1 (IP: 192.168.103.24)"
   },
   {
     "name": "leaf4",
@@ -57,7 +67,7 @@
     ],
     "description": "Verifies the health of specific BGP peer(s) for given address families.",
     "result": "success",
-    "custom_field": "BGP IPv4 Unicast Peer: spine2 (IP: 192.168.103.20)"
+    "custom_field": "BGP IPv4 Unicast Peer: spine2 (IP: 192.168.103.26)"
   },
   {
     "name": "leaf4",
@@ -67,7 +77,17 @@
     ],
     "description": "Verifies the health of specific BGP peer(s) for given address families.",
     "result": "success",
-    "custom_field": "BGP IPv4 Unicast Peer: spine3 (IP: 192.168.103.22)"
+    "custom_field": "BGP IPv4 Unicast Peer: spine3 (IP: 192.168.103.28)"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP IPv4 Unicast Peer: spine4 (IP: 192.168.103.30)"
   },
   {
     "name": "leaf4",
@@ -118,6 +138,16 @@
     "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
     "result": "success",
     "custom_field": "Local: Ethernet5 - Remote: spine3 Ethernet6"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
+    "result": "success",
+    "custom_field": "Local: Ethernet6 - Remote: spine4 Ethernet6"
   },
   {
     "name": "leaf4",
@@ -197,7 +227,7 @@
     ],
     "description": "Test network reachability to one or many destination IP(s).",
     "result": "success",
-    "custom_field": "Source: P2P Interface Ethernet3 (IP: 192.168.103.19) - Destination: spine1 Ethernet6 (IP: 192.168.103.18)"
+    "custom_field": "Source: Loopback0 (IP: 192.168.101.4) - Destination: spine4 Loopback0 (IP: 192.168.101.14)"
   },
   {
     "name": "leaf4",
@@ -207,7 +237,7 @@
     ],
     "description": "Test network reachability to one or many destination IP(s).",
     "result": "success",
-    "custom_field": "Source: P2P Interface Ethernet4 (IP: 192.168.103.21) - Destination: spine2 Ethernet6 (IP: 192.168.103.20)"
+    "custom_field": "Source: P2P Interface Ethernet3 (IP: 192.168.103.25) - Destination: spine1 Ethernet6 (IP: 192.168.103.24)"
   },
   {
     "name": "leaf4",
@@ -217,7 +247,27 @@
     ],
     "description": "Test network reachability to one or many destination IP(s).",
     "result": "success",
-    "custom_field": "Source: P2P Interface Ethernet5 (IP: 192.168.103.23) - Destination: spine3 Ethernet6 (IP: 192.168.103.22)"
+    "custom_field": "Source: P2P Interface Ethernet4 (IP: 192.168.103.27) - Destination: spine2 Ethernet6 (IP: 192.168.103.26)"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: P2P Interface Ethernet5 (IP: 192.168.103.29) - Destination: spine3 Ethernet6 (IP: 192.168.103.28)"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: P2P Interface Ethernet6 (IP: 192.168.103.31) - Destination: spine4 Ethernet6 (IP: 192.168.103.30)"
   },
   {
     "name": "leaf4",
@@ -328,7 +378,27 @@
     ],
     "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
     "result": "success",
+    "custom_field": "Interface Ethernet6 - P2P_spine4_Ethernet6 = 'up'"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
     "custom_field": "Interface Ethernet7 - SERVER_host3_Ethernet2 = 'up'"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Ethernet9 = 'up'"
   },
   {
     "name": "leaf4",
@@ -488,6 +558,16 @@
     "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
     "result": "success",
     "custom_field": "Route: 192.168.101.13 - Peer: spine3"
+  },
+  {
+    "name": "leaf4",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 192.168.101.14 - Peer: spine4"
   },
   {
     "name": "leaf4",

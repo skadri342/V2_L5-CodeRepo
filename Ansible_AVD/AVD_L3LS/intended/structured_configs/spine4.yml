@@ -5,52 +5,52 @@ enable_password:
   disabled: true
 ethernet_interfaces:
 - name: Ethernet3
-  description: P2P_leaf1_Ethernet5
+  description: P2P_leaf1_Ethernet6
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.4/31
+  ip_address: 192.168.103.6/31
   peer: leaf1
-  peer_interface: Ethernet5
+  peer_interface: Ethernet6
   peer_type: l3leaf
   switchport:
     enabled: false
 - name: Ethernet4
-  description: P2P_leaf2_Ethernet5
+  description: P2P_leaf2_Ethernet6
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.12/31
+  ip_address: 192.168.103.14/31
   peer: leaf2
-  peer_interface: Ethernet5
+  peer_interface: Ethernet6
   peer_type: l3leaf
   switchport:
     enabled: false
 - name: Ethernet5
-  description: P2P_leaf3_Ethernet5
+  description: P2P_leaf3_Ethernet6
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.20/31
+  ip_address: 192.168.103.22/31
   peer: leaf3
-  peer_interface: Ethernet5
+  peer_interface: Ethernet6
   peer_type: l3leaf
   switchport:
     enabled: false
 - name: Ethernet6
-  description: P2P_leaf4_Ethernet5
+  description: P2P_leaf4_Ethernet6
   shutdown: false
   mtu: 1550
-  ip_address: 192.168.103.28/31
+  ip_address: 192.168.103.30/31
   peer: leaf4
-  peer_interface: Ethernet5
+  peer_interface: Ethernet6
   peer_type: l3leaf
   switchport:
     enabled: false
-hostname: spine3
+hostname: spine4
 ip_routing: true
 loopback_interfaces:
 - name: Loopback0
   description: ROUTER_ID
   shutdown: false
-  ip_address: 192.168.101.13/32
+  ip_address: 192.168.101.14/32
 management_api_http:
   enable_https: true
   enable_vrfs:
@@ -60,7 +60,7 @@ management_interfaces:
   description: OOB_MANAGEMENT
   shutdown: false
   vrf: MGMT
-  ip_address: 192.168.0.13/24
+  ip_address: 192.168.0.14/24
   type: oob
   gateway: 192.168.0.1
 metadata:
@@ -86,7 +86,7 @@ router_bfd:
     multiplier: 3
 router_bgp:
   as: '65001'
-  router_id: 192.168.101.13
+  router_id: 192.168.101.14
   maximum_paths:
     paths: 4
     ecmp: 4
@@ -107,26 +107,26 @@ router_bgp:
     send_community: all
     maximum_routes: 0
   neighbors:
-  - ip_address: 192.168.103.5
+  - ip_address: 192.168.103.7
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65100'
     peer: leaf1
-    description: leaf1_Ethernet5
-  - ip_address: 192.168.103.13
+    description: leaf1_Ethernet6
+  - ip_address: 192.168.103.15
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65100'
     peer: leaf2
-    description: leaf2_Ethernet5
-  - ip_address: 192.168.103.21
+    description: leaf2_Ethernet6
+  - ip_address: 192.168.103.23
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65299'
     peer: leaf3
-    description: leaf3_Ethernet5
-  - ip_address: 192.168.103.29
+    description: leaf3_Ethernet6
+  - ip_address: 192.168.103.31
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65299'
     peer: leaf4
-    description: leaf4_Ethernet5
+    description: leaf4_Ethernet6
   - ip_address: 192.168.101.1
     peer_group: EVPN-OVERLAY-PEERS
     remote_as: '65100'
