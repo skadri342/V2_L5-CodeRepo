@@ -7,7 +7,7 @@
         facts: 
           - tasks
         regexp_filter: 'Pending'
-      register: CVP_FACTSe
+      register: CVP_FACTS
     - name: Run pending tasks
       arista.cvp.cv_task_v3:
         tasks: "{{ CVP_FACTS.data.cvp_tasks | list }}"
