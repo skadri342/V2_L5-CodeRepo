@@ -52,6 +52,15 @@ ethernet_interfaces:
   peer_type: spine
   switchport:
     enabled: false
+- name: Ethernet7
+  description: SERVER_host3_Ethernet1
+  shutdown: false
+  channel_group:
+    id: 7
+    mode: active
+  peer: host3
+  peer_interface: Ethernet1
+  peer_type: server
 hostname: leaf3
 ip_igmp_snooping:
   globally_enabled: true
@@ -99,6 +108,15 @@ port_channel_interfaces:
     trunk:
       groups:
       - MLAG
+- name: Port-Channel7
+  description: PortChannel host3
+  shutdown: false
+  mlag: 7
+  spanning_tree_portfast: edge
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
 prefix_lists:
 - name: PL-LOOPBACKS-EVPN-OVERLAY
   sequence_numbers:
@@ -214,6 +232,14 @@ router_bgp:
       - 10010:10010
     redistribute_routes:
     - learned
+  - id: 20
+    tenant: ACME
+    rd: 192.168.101.3:10020
+    route_targets:
+      both:
+      - 10020:10020
+    redistribute_routes:
+    - learned
   address_family_evpn:
     peer_groups:
     - name: EVPN-OVERLAY-PEERS
@@ -277,6 +303,12 @@ vlan_interfaces:
   vrf: VRF_A
   ip_address_virtual: 10.1.10.1/24
   tenant: ACME
+- name: Vlan20
+  description: Internal
+  shutdown: false
+  vrf: VRF_A
+  ip_address_virtual: 10.1.20.1/24
+  tenant: ACME
 - name: Vlan3009
   description: MLAG_L3_VRF_VRF_A
   shutdown: false
@@ -304,6 +336,9 @@ vlans:
 - id: 10
   name: DMZ
   tenant: ACME
+- id: 20
+  name: Internal
+  tenant: ACME
 - id: 3009
   name: MLAG_L3_VRF_VRF_A
   trunk_groups:
@@ -325,6 +360,8 @@ vxlan_interface:
       vlans:
       - id: 10
         vni: 10010
+      - id: 20
+        vni: 10020
       vrfs:
       - name: VRF_A
         vni: 10
